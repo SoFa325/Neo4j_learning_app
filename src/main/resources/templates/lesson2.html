@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neo4jApp</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/styles.css" th:href="@{/css/styles.css}" />
+    <style>
+    p {
+     margin-top: 0.5em;
+     margin-bottom: 1em;
+     font-size: 14pt;
+     text-indent: 20px;
+     color:Navy;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <img th:src="@{/images/logo.бел.png}" />
+    </div>
+    <h1>Веб-ориентированное образовательное приложение<br>для изучения Neo4j</h1>
+    <input type="checkbox" id="side-checkbox" />
+    <div class="side-panel">
+        <label class="side-button-2" for="side-checkbox">+</label>
+        <div class="side-title">Курс Neo4j</div>
+        <p style="margin-top: 0.5em; margin-bottom: 1em;"><a href="/lesson1">Первый урок</a></p>
+        <ul  style="margin-right: 25px; margin-left: 25px;">
+            <li style="margin-top: 0.5em; margin-bottom: 1em; margin-left: 45px;"><a href="/task1">Задача 1</a></li>
+            <li style="margin-top: 0.5em; margin-bottom: 1em; margin-left: 45px;"><a href="/task2">Задача 2</a></li>
+            <li style="margin-top: 0.5em; margin-bottom: 1em; margin-left: 45px;"><a href="/task3">Задача 3</a></li>
+            <li style="margin-top: 0.5em; margin-bottom: 1em; margin-left: 45px;"><a href="/task4">Задача 4</a></li>
+        </ul>
+        <p style="margin-top: 0.5em; margin-bottom: 1em;"><a href="/lesson2">Второй урок</a></p>
+        <ul  style="margin-right: 25px; margin-left: 25px;">
+            <li style="margin-top: 0.5em; margin-bottom: 1em; margin-left: 45px;"><a href="/task5">Задача 5</a></li>
+            <li style="margin-top: 0.5em; margin-bottom: 1em; margin-left: 45px;"><a href="/task6">Задача 6</a></li>
+            <li style="margin-top: 0.5em; margin-bottom: 1em; margin-left: 45px;"><a href="/task7">Задача 7</a></li>
+            <li style="margin-top: 0.5em; margin-bottom: 1em; margin-left: 45px;"><a href="/task8">Задача 8</a></li>
+            <li style="margin-top: 0.5em; margin-bottom: 1em; margin-left: 45px;"><a href="/task9">Задача 9</a></li>
+        </ul>
+        <p style="margin-top: 0.5em; margin-bottom: 1em;"><a href="/lesson3">Третий урок</a></p>
+        <ul  style="margin-right: 25px; margin-left: 25px;">
+            <li style="margin-top: 0.5em; margin-bottom: 1em; margin-left: 45px;"><a href="/task10">Задача 10</a></li>
+            <li style="margin-top: 0.5em; margin-bottom: 1em; margin-left: 45px;"><a href="/task11">Задача 11</a></li>
+            <li style="margin-top: 0.5em; margin-bottom: 1em; margin-left: 45px;"><a href="/task12">Задача 12</a></li>
+            <li style="margin-top: 0.5em; margin-bottom: 1em; margin-left: 45px;"><a href="/task13">Задача 13</a></li>
+            <li style="margin-top: 0.5em; margin-bottom: 1em; margin-left: 45px;"><a href="/task14">Задача 14</a></li>
+        </ul>
+    </div>
+    <div class="side-button-1-wr">
+        <label class="side-button-1" for="side-checkbox">
+            <div class="side-b side-open"><p style="text-decoration:underline;  color:#6495ED;">Навигационная панель</p></div>
+            <div class="side-b side-close"><p style="text-decoration:underline;  color:#6495ED;">Навигационная панель</p></div>
+        </label>
+    </div>
+    <nav>
+        <div class="tooltip" style="font-size: 14pt; margin-right: 50px; "><p style="text-decoration:underline; color:#6495ED;">Описание БД</p>
+            <span class="tooltiptext">В данном приложении используется база данных некоторой социальной сети. Узлами являются люди (пользователи, метка Person) и группы (сообщества по интересам, метка Group). У Person есть следующие атрибуты - name (имя человека, строка), surname (фамилия человека, строка), birth_data (дата рождения человека, например '12.06.2004'). У Group присутствуют следующие атрибуты - name (название сообщества, строка), topic (общая тематика сообщества, строка), number_of_publications (число публикаций, целое число). Между людьми есть связи дружбы и ненависти (FRIENDS и HATES), не имеющие атрибутов. Между людьми и группами есть связь FOLLOWS, имеющая атрибут since, хранящий дату подписи пользователя на группу.</span>
+        </div>
+    </nav>
+</header>
+<main>
+    <div class="wrapper">
+        <div class="box" style="margin-right: 25px; margin-left: 25px;">
+            <p>На прошлом уроке вы узнали, как создавать узлы и отношения в данной СУБД и как это рекомендуется делать. На данном уроке поговорим о разных способах удаления и изменения информации в базе данных. Осторожно проводите все манипуляции с данными.</p>
+            <p>Для начала поговорим про основополагающую часть языка Cypher – шаблоны. Данным термином обозначаются куски запроса, поясняющие СУБД какой конкретно кусок базы данных нам необходим. Приведем пару примеров шаблонов:</p>
+            <ul style="margin-left: 40px; color:Navy;">
+                <li style="color:Navy;"><p>() – пустой узел, (n) – любой узел базы данных, обозначенный переменной n</p></li>
+                <li style="color:Navy;"><p>(n:Person) – любой узел с меткой Person</p></li>
+                <li style="color:Navy;"><p>[r:FRIENDS] – любая связь с меткой FRIENDS</p></li>
+                <li style="color:Navy;"><p>(n)-[r]-(m) – все узлы соединенные любым отношением</p></li>
+                <li style="color:Navy;"><p>(n:Person)-[r]->(m:Group) – узлы с меткой Person соединенные с узлами с меткой Group со строгим направлением данной связи.</p></li>
+            </ul>
+            <p>Таким образом, шаблон узла – (….), шаблон отношения – [….], связь между отношениями обозначается – и ->. Если на данный момент о шаблонах не все понятно, ничего страшного, в последующих уроках вы все сильнее станете к ним привыкать и узнавать о них больше.</p>
+            <h3 align="center" style="color:Navy;">Удаление данных</h3>
+            <h4 style="color:Navy;">Операция DELETE</h4>
+            <p>Данный оператор используется для удаления графовых данных из базы данных. Синтаксис запроса, содержащего данный оператор зачастую выглядит следующим образом:</p>
+            <p align="center">MATCH &lt;шаблон&gt; DELETE переменная1 ‘, переменная2, …’</p>
+            <p>Как удалить конкретного человека из базы данных предлагается решить в следующей после урока задаче. Покажем примеры опасных запросов с использованием данного оператора:</p>
+            <ul style="margin-left: 40px; color:Navy;">
+                <li style="color:Navy;"><p>MATCH (n:Метка) DELETE n – данный запрос удаляет все узлы с данной меткой из базы данных</p></li>
+                <li style="color:Navy;"><p>MATCH (n) DELETE n – следующий запрос же удаляет все узлы из базы данных</p></li>
+            </ul>
+            <p>На удаление узлов в Neo4j наложено ограничение – СУБД не позволит удаление узла связанного хотя бы одним отношением.</p>
+            <p>Для удаления отношения же ограничений нет, главное правильным образом определить шаблон удаляемых данных. Для удаления всех отношений в базе данных используется следующий запрос:</p>
+            <p align="center">MATCH ()-[r]-‘>’() DELETE r</p>
+            <p>Соответственно, для очистки всей базы данных необходимо всего два запроса. Первый удаляет все отношения, последующий подчищает узлы. После ключевого слова DELETE могут стоять любые переменные и их атрибуты, ранее определённые в секции MATCH.</p>
+            <h4 style="color:Navy;">Операция REMOVE</h4>
+            <p>Данный оператор используется для удаления атрибутов и меток. Для удаления данных узлов и ребер. Общий вид такого запроса представлен ниже:</p>
+            <p>MATCH &lt;шаблон с уточнением данных&gt;</p>
+            <p>REMOVE переменная.атрибут | переменная:метка …</p>
+            <p>‘RETURN &lt;выводимые данные&gt;’</p>
+            <p>Например, для удаления атрибута день рождения у узла с именем ‘Oleg’ необходимо выполнить следующий запрос:</p>
+            <p>MATCH (n:Person {name:’Oleg’})</p>
+            <p>REMOVE n.birth_data</p>
+            <h3 align="center" style="color:Navy;">Обновление данных</h3>
+            <p>Для внесения изменений в данные применяют запрос MATCH с секцией SET, которая указывает, где и что необходимо изменить, а также критерии отбора обновляемых объектов:</p>
+            <p>MATCH &lt;шаблон&gt;</p>
+            <p>SET ‘переменная.атрибут’ = константа | {атрибут: константа, …} | метка | NULL</p>
+            <p>Таким образом, SET позволяет менять значения атрибутов, меток, добавлять новые данные и обнулять их.</p>
+            <p>Приведем пример. Для того, чтобы изменить название группы в учебной базе данных необходимо выполнить следующий запрос:</p>
+            <p align="center">MATCH (g:GROUP {name:’DevOps’}) SET g.name = ‘DevOPS’</p>
+            <p>Вместо присваиваемого значения также может быть любое арифметическое выражение. Также, SET позволяет удалять ненужные с вашей точки зрения атрибуты узлов и ребер, просты присвоением им константы NULL.</p>
+        </div>
+    </div>
+</main>
+</body>
+</html>

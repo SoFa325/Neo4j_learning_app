@@ -1,0 +1,288 @@
+* {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      color: #6495ED;
+   }
+header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 15px;
+   }
+   img {
+      width: 230px;
+      height: 60px;
+   }
+   h1 {
+      text-align: center;
+      font-size: 22px;
+   }
+   a {
+      padding: 20px;
+      /* color: blue; */
+      font-size: 20px;
+   }
+.box {
+   position: relative;
+   align-items: center;
+}
+
+.tooltip {
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+    }
+    .tooltip .tooltiptext {
+        visibility: hidden;
+        width: 300px;
+        background-color: aliceblue;
+        color:#6495ED;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px;
+        position: absolute;
+        z-index: 1;
+        top: 125%;
+        left: 50%;
+        margin-left: -250px;
+        opacity: 0;
+        transition: opacity 1s;
+    }
+
+    .tooltip:hover .tooltiptext {
+        visibility: visible;
+        opacity: 1;
+    }
+form.request {
+   position: relative;
+   width: 100%;
+   margin: 0 auto;
+ }
+input {
+   position: absolute;
+   width: 95%;
+   height: 80%;
+   padding: 5px;
+}
+input:focus {
+   background-color: rgb(50, 64, 168);
+}
+input:required {
+   background-color: red;
+}
+   .request input, button {
+      border: none;
+      outline: none;
+      border-radius: 5px;
+   }
+   .request input {
+      width: 100%;
+      height: 50px;
+      background: #e5f7fa;
+      padding-left: 15px;
+      font-size: 20px;
+      font-family: 'Times New Roman', Times, serif;
+   }    
+ .request button {
+   height: 25px;
+   width: 25px;
+   position: absolute;
+   top: 11px;
+   right: 11px;
+   background: rgb(152, 243, 250);
+   cursor: pointer;
+ }
+ .request button:before {
+   content: "▶️";
+ }
+ 
+.wrapper {
+   display: grid;
+   grid-template-columns: repeat(8);
+   grid-auto-rows: minmax(80px, auto);
+   grid-gap: 1em;
+   justify-items: stretch;
+   align-items: stretch;
+}
+.wrapper > div {
+   background-color: rgb(154, 252, 219);
+   padding: 1em;
+}
+.wrapper > .light {
+   background-color: aliceblue;
+   padding: 1em;
+}
+
+.box1 {
+   justify-items: center;
+   align-items: center;
+   width: 685px;
+   height: 150px;
+   resize: none;
+   overflow: auto;
+   margin-left: 15px;
+}
+.box2 {
+    display: flex;
+    grid-column: 1/8;
+    grid-row: 1;
+    width: 1493px;
+    height: 120px;
+    margin-right: 15px;
+    margin-left: 15px;
+
+}
+.box3 {
+     width: 685px;
+     height: 550px;
+     grid-row: 3/9;
+     overflow: auto;
+     white-space: pre-wrap;
+     margin-left: 15px;
+}
+.box4 {
+     width: 800px;
+     height: 715px;
+     grid-row: 2/9;
+     overflow: auto;
+}
+
+textarea {
+  width: 100%;
+  resize: none;
+}
+.box2 {
+   display: grid;
+   grid-auto-rows: 20px auto;
+   grid-gap: 1em;
+   justify-items: stretch;
+   align-items: stretch;
+   resize: none;
+}
+.box3 {
+   display: grid;
+   grid-auto-rows: 20px auto;
+   grid-gap: 1em;
+   justify-items: stretch;
+   align-items: stretch;
+   resize: none;
+}
+.box4 {
+   display: grid;
+   grid-auto-rows: 20px auto;
+   grid-gap: 1em;
+   justify-items: stretch;
+   align-items: stretch;
+   resize: none;
+}
+
+.next button {
+   background-color: rgb(180, 254, 229);
+   padding: 5px;
+   color: blue;
+   font-size: 22px;
+   font-weight: 700;
+   font-family: 'Times New Roman', Times, serif;
+   cursor: pointer;
+   text-shadow: 2px 2px aliceblue;
+   border-radius: 6px;
+   box-shadow: 0px 1px 3px;
+} 
+.buttonNext {
+   display: flex;
+   justify-content:center;
+   align-items: center;
+   margin: 20px;
+}
+
+footer {
+   height: 50px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin: 10px;
+}
+
+input[type="text"] {
+  width: 600px ; /* Потому что размер имеет значение */
+  height: 50px ; /* И высота не исключение */
+  background-color: aliceblue;
+  color: blue;
+}
+
+#side-checkbox {
+    display: none;
+}
+.side-panel {
+    position: fixed;
+    z-index: 999999;
+    top: 0;
+    left: -360px;
+    background: rgb(154, 252, 219);
+    transition: all 0.5s;
+    width: 320px;
+    height: 100vh;
+    box-shadow: 10px 0 20px rgba(0,0,0,0.4);
+    color: #FFF;
+    padding: 40px 20px;
+    overflow: auto;
+}
+.side-title {
+    font-size: 20px;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #BFE2FF;
+}
+/* Оформление кнопки на странице */
+.side-button-1-wr {
+    position: flex;
+}
+.side-button-1 {
+    display: inline-block;
+}
+.side-button-1 .side-b {
+    font-size: 18px;
+    color: #6495ED;
+    cursor: pointer;
+
+}
+.side-button-1 .side-b:hover,
+.side-button-1 .side-b:active,
+.side-button-1 .side-b:focus {
+    color:Navy;
+}
+.side-button-1 .side-b:after,
+.side-button-1 .side-b:before {
+    position: flex;
+}
+/* Переключатели кнопки 1 */
+.side-button-1 .side-close {
+    display: none;
+}
+#side-checkbox:checked + .side-panel + .side-button-1-wr .side-button-1 .side-open {
+    display: none;
+}
+#side-checkbox:checked + .side-panel + .side-button-1-wr .side-button-1 .side-close {
+    display: block;
+}
+#side-checkbox:checked + .side-panel {
+    left: 0;
+}
+/* Оформление кнопки на панеле */
+.side-button-2 {
+    font-size: 30px;
+    border-radius: 20px;
+    position: absolute;
+    z-index: 1;
+    top: 8px;
+    right: 8px;
+    cursor: pointer;
+    transform: rotate(45deg);
+    color:  #6495ED;
+    transition: all 280ms ease-in-out;
+}
+.side-button-2:hover {
+    transform: rotate(45deg) scale(1.1);
+    color:  #6495ED;
+}

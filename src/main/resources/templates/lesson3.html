@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neo4jApp</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/styles.css" th:href="@{/css/styles.css}" />
+    <style>
+    p {
+     margin-top: 0.5em;
+     margin-bottom: 1em;
+     font-size: 14pt;
+     text-indent: 20px;
+     color:Navy;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <img th:src="@{/images/logo.бел.png}" />
+    </div>
+    <h1>Веб-ориентированное образовательное приложение<br>для изучения Neo4j</h1>
+    <input type="checkbox" id="side-checkbox" />
+    <div class="side-panel">
+        <label class="side-button-2" for="side-checkbox">+</label>
+        <div class="side-title">Курс Neo4j</div>
+        <p style="margin-top: 0.5em; margin-bottom: 1em;"><a href="/lesson1">Первый урок</a></p>
+        <ul  style="margin-right: 25px; margin-left: 25px;">
+            <li style="margin-top: 0.5em; margin-bottom: 1em; margin-left: 45px;"><a href="/task1">Задача 1</a></li>
+            <li style="margin-top: 0.5em; margin-bottom: 1em; margin-left: 45px;"><a href="/task2">Задача 2</a></li>
+            <li style="margin-top: 0.5em; margin-bottom: 1em; margin-left: 45px;"><a href="/task3">Задача 3</a></li>
+            <li style="margin-top: 0.5em; margin-bottom: 1em; margin-left: 45px;"><a href="/task4">Задача 4</a></li>
+        </ul>
+        <p style="margin-top: 0.5em; margin-bottom: 1em;"><a href="/lesson2">Второй урок</a></p>
+        <ul  style="margin-right: 25px; margin-left: 25px;">
+            <li style="margin-top: 0.5em; margin-bottom: 1em; margin-left: 45px;"><a href="/task5">Задача 5</a></li>
+            <li style="margin-top: 0.5em; margin-bottom: 1em; margin-left: 45px;"><a href="/task6">Задача 6</a></li>
+            <li style="margin-top: 0.5em; margin-bottom: 1em; margin-left: 45px;"><a href="/task7">Задача 7</a></li>
+            <li style="margin-top: 0.5em; margin-bottom: 1em; margin-left: 45px;"><a href="/task8">Задача 8</a></li>
+            <li style="margin-top: 0.5em; margin-bottom: 1em; margin-left: 45px;"><a href="/task9">Задача 9</a></li>
+        </ul>
+        <p style="margin-top: 0.5em; margin-bottom: 1em;"><a href="/lesson3">Третий урок</a></p>
+        <ul  style="margin-right: 25px; margin-left: 25px;">
+            <li style="margin-top: 0.5em; margin-bottom: 1em; margin-left: 45px;"><a href="/task10">Задача 10</a></li>
+            <li style="margin-top: 0.5em; margin-bottom: 1em; margin-left: 45px;"><a href="/task11">Задача 11</a></li>
+            <li style="margin-top: 0.5em; margin-bottom: 1em; margin-left: 45px;"><a href="/task12">Задача 12</a></li>
+            <li style="margin-top: 0.5em; margin-bottom: 1em; margin-left: 45px;"><a href="/task13">Задача 13</a></li>
+            <li style="margin-top: 0.5em; margin-bottom: 1em; margin-left: 45px;"><a href="/task14">Задача 14</a></li>
+        </ul>
+    </div>
+    <div class="side-button-1-wr">
+        <label class="side-button-1" for="side-checkbox">
+            <div class="side-b side-open"><p style="text-decoration:underline;  color:#6495ED;">Навигационная панель</p></div>
+            <div class="side-b side-close"><p style="text-decoration:underline;  color:#6495ED;">Навигационная панель</p></div>
+        </label>
+    </div>
+    <nav>
+        <div class="tooltip" style="font-size: 14pt; margin-right: 50px; "><p style="text-decoration:underline; color:#6495ED;">Описание БД</p>
+            <span class="tooltiptext">В данном приложении используется база данных некоторой социальной сети. Узлами являются люди (пользователи, метка Person) и группы (сообщества по интересам, метка Group). У Person есть следующие атрибуты - name (имя человека, строка), surname (фамилия человека, строка), birth_data (дата рождения человека, например '12.06.2004'). У Group присутствуют следующие атрибуты - name (название сообщества, строка), topic (общая тематика сообщества, строка), number_of_publications (число публикаций, целое число). Между людьми есть связи дружбы и ненависти (FRIENDS и HATES), не имеющие атрибутов. Между людьми и группами есть связь FOLLOWS, имеющая атрибут since, хранящий дату подписи пользователя на группу.</span>
+        </div>
+    </nav>
+</header>
+<main>
+    <div class="wrapper">
+        <div class="box" style="margin-right: 25px; margin-left: 25px;">
+            <p>На данном уроке поговорим подробнее про запросы на выборку данных и их структуру:</p>
+            <p>MATCH &lt;шаблон&gt;</p>
+            <p>‘WHERE &lt;условие&gt;’</p>
+            <p>RETURN &lt;выводимые данные&gt;</p>
+            <p>‘ORDER BY переменная.атрибут ‘ASC | DESC ….’’</p>
+            <p>‘SKIP n’</p>
+            <p>‘LIMIT l’;</p>
+            <p>Далее рассмотрим незнакомые нам составляющие данного запроса подробнее.</p>
+            <h4 style="color:Navy;">Cекция WHERE</h4>
+            <p>Данная секция навешивает ограничение на данные, подходящие под шаблон в секции MATCH. Условие содержит различные операции сравнения и логические операции (NOT, AND, OR, XOR – 'НЕ', 'И', 'ИЛИ', 'ИСКЛЮЧАЮЩЕЕ ИЛИ'). Условием может быть ограничение на метку узла, на значения атрибута узла или отношения, проверкой на существование атрибута, регулярное выражение, шаблон… Приведём пару примеров использования WHERE (попробуйте сами понять, что они возвращают):</p>
+            <ul style="margin-left: 40px; color:Navy;">
+                <li style="color:Navy;"><p>MATCH (n) WHERE n:Person RETURN n</p></li>
+                <li style="color:Navy;"><p>MATCH (n:Person) WHERE n.name = “Oleg” RETURN n</p></li>
+                <li style="color:Navy;"><p>MATCH (n:Person) WHERE EXISTS(n.birth_data) RETURN n (проверка на существование атрибута)</p></li>
+                <li style="color:Navy;"><p>MATCH (n:Person) WHERE n.birth_data IS NULL RETURN n (так же проверка на существование атрибута (между IS и NULL может стоять NOT))</p></li>
+            </ul>
+            <p>Использование регулярных выражений и различная фильтрация строк будет рассмотрена в последующих уроках.</p>
+            <h4 style="color:Navy;">Cекция ORDER BY</h4>
+            <p>Следующая секция позволяет сортировать результаты запроса, синтаксис данной секции был представлен выше. Рассмотрим пару нюансов ее использования:</p>
+            <ul style="margin-left: 40px; color:Navy;">
+                <li style="color:Navy;"><p>Опция DESC означает, что результат запроса будет отсортирован по убыванию. ASC, соответственно отвечает за сортировку по возрастанию. </p></li>
+                <li style="color:Navy;"><p>Сортировку можно производить по нескольким атрибутам, старшинство атрибутов определяется слева направо, то есть сначала сортировка произойдет по самому левому атрибуту и далее по порядку.</p></li>
+                <li style="color:Navy;"><p>Сортировку можно применить к функции, использованной на значениях атрибутов. В дальнейшем вы больше узнаете о функциях.</p></li>
+            </ul>
+            <h4 style="color:Navy;">Cекция SKIP и LIMIT</h4>
+            <p>Данные секции отвечают за ограничение результата запроса соответственно с начала и конца. То есть, если в запросе присутствует следующий текст:</p>
+            <p align="center">SKIP n LIMIT l</p>
+            <p>А всего запрос должен был вывести m значений, то с применением данных ограничений он выведет все значения начиная с n+1 и заканчивая l значением. SKIP пропускает первые n значений, LIMIT же пропускает все значения после l-ого.</p>
+        </div>
+    </div>
+</main>
+</body>
+</html>

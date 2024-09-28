@@ -1,0 +1,101 @@
+
+Create (p:Person {name:'Елена'})
+Create (p:Person {name:'Виктория'})
+Create (p:Person {name:'Данила'})
+Create (p:Person {name:'Никита'})
+Create (p:Person {name:'Егор'})
+Create (p:Person {name:'Игорь'})
+Create (p:Person {name:'Михаил'})
+Create (p:Person {name:'Ольга'})
+Create (p1:Person {name:'Василий'})
+Create (p2:Person {name:'Дмитрий'})
+Create (p3:Person {name:'Алина'})
+Create (p4:Person {name:'Артем'})
+Create (p5:Person {name:'Полина'})
+Create (p6:Person {name:'Елисей'})
+Create (p:Person {name:'Мишель'})
+
+Match (p1:Person) Where p1.name='Елена' Match (p2:Person) Where p2.name='Виктория' Create (p1)-[r:FRIENDS]->(p2)
+Match (p1:Person) Where p1.name='Ольга' Match (p2:Person) Where p2.name='Михаил' Create (p1)-[r:FRIENDS]->(p2)
+Match (p1:Person) Where p1.name='Ольга' Match (p2:Person) Where p2.name='Елена' Create (p1)-[r:FRIENDS]->(p2)
+Match (p1:Person) Where p1.name='Михаил' Match (p2:Person) Where p2.name='Игорь' Create (p1)-[r:FRIENDS]->(p2)
+Match (p1:Person) Where p1.name='Егор' Match (p2:Person) Where p2.name='Игорь' Create (p1)-[r:FRIENDS]->(p2)
+Match (p1:Person) Where p1.name='Егор' Match (p2:Person) Where p2.name='Виктория' Create (p1)-[r:FRIENDS]->(p2)
+Match (p1:Person) Where p1.name='Игорь' Match (p2:Person) Where p2.name='Егор' Create (p1)-[r:FRIENDS]->(p2)
+Match (p1:Person) Where p1.name='Никита' Match (p2:Person) Where p2.name='Виктория' Create (p1)-[r:FRIENDS]->(p2)
+Match (p1:Person) Where p1.name='Никита' Match (p2:Person) Where p2.name='Елена' Create (p1)-[r:FRIENDS]->(p2)
+Match (p1:Person) Where p1.name='Василий' Match (p2:Person) Where p2.name='Михаил' Create (p1)-[r:FRIENDS]->(p2)
+Match (p1:Person) Where p1.name='Василий' Match (p2:Person) Where p2.name='Данила' Create (p1)-[r:FRIENDS]->(p2)
+Match (p1:Person) Where p1.name='Данила' Match (p2:Person) Where p2.name='Никита' Create (p1)-[r:FRIENDS]->(p2)
+Match (p1:Person) Where p1.name='Артем' Match (p2:Person) Where p2.name='Полина' Create (p1)-[r:FRIENDS]->(p2)
+Match (p1:Person) Where p1.name='Полина' Match (p2:Person) Where p2.name='Мишель' Create (p1)-[r:FRIENDS]->(p2)
+Match (p1:Person) Where p1.name='Полина' Match (p2:Person) Where p2.name='Елисей' Create (p1)-[r:FRIENDS]->(p2)
+Match (p1:Person) Where p1.name='Мишель' Match (p2:Person) Where p2.name='Елисей' Create (p1)-[r:FRIENDS]->(p2)
+Match (p1:Person) Where p1.name='Алина' Match (p2:Person) Where p2.name='Артем' Create (p1)-[r:FRIENDS]->(p2)
+Match (p1:Person) Where p1.name='Дмитрий' Match (p2:Person) Where p2.name='Алина' Create (p1)-[r:FRIENDS]->(p2)
+
+Match (p:Person) Where p.name = 'Елена' Set p.surname='Белякова' Set p.birth_data = '22.03.1990'
+Match (p:Person) Where p.name = 'Виктория' Set p.surname='Петрова' Set p.birth_data = '22.09.1999'
+Match (p:Person) Where p.name = 'Данила' Set p.surname='Степанов' Set p.birth_data = '30.01.2014'
+Match (p:Person) Where p.name = 'Никита' Set p.surname='Чижов' Set p.birth_data = '02.11.1980'
+Match (p:Person) Where p.name = 'Егор' Set p.surname='Михайлов' Set p.birth_data = '27.09.1967'
+Match (p:Person) Where p.name = 'Игорь' Set p.surname='Ковалев' Set p.birth_data = '20.02.2000'
+Match (p:Person) Where p.name = 'Михаил' Set p.surname='Родин' Set p.birth_data = '12.03.2002'
+Match (p:Person) Where p.name = 'Ольга' Set p.surname='Калинина' Set p.birth_data = '02.03.2004'
+Match (p:Person) Where p.name = 'Василий' Set p.surname='Фомин' Set p.birth_data = '22.12.1990'
+Match (p:Person) Where p.name = 'Дмитрий' Set p.surname='Никулин' Set p.birth_data = '15.06.1950'
+Match (p:Person) Where p.name = 'Алина' Set p.surname='Ершова' Set p.birth_data = '08.05.2008'
+Match (p:Person) Where p.name = 'Артем' Set p.surname='Исаков' Set p.birth_data = '31.08.1998'
+Match (p:Person) Where p.name = 'Полина' Set p.surname='Кузнецова' Set p.birth_data = '14.04.2010'
+Match (p:Person) Where p.name = 'Елисей' Set p.surname='Пирогов' Set p.birth_data = '26.06.1987'
+Match (p:Person) Where p.name = 'Мишель' Set p.surname='Иванов' Set p.birth_data = '29.10.2000'
+
+Match (p1:Person) Where p1.name='Ольга' Match (p2:Person) Where p2.name='Данила' Create (p1)-[r:HATES]->(p2)
+Match (p1:Person) Where p1.name='Елисей' Match (p2:Person) Where p2.name='Артем' Create (p1)-[r:HATES]->(p2)
+Match (p1:Person) Where p1.name='Михаил' Match (p2:Person) Where p2.name='Виктория' Create (p1)-[r:HATES]->(p2)
+
+Merge (g:Group {name: 'Веселое садоводство', topic: 'садоводство', number_of_publications:30 })
+Merge (g1:Group {name: 'DevOps', topic: 'программирование', number_of_publications:200 })
+Merge (g2:Group {name: 'Популярные игры', topic: 'игры', number_of_publications:10})
+Merge (g3:Group {name: 'Вечерние новости', topic: 'новости', number_of_publications:1000})
+Merge (g4:Group {name: 'Современные фильмы', topic: 'фильмы', number_of_publications:346})
+Merge (g5:Group {name: 'Новости университета', topic: 'новости', number_of_publications:400})
+
+Match (p:Person) Where p.name = 'Елена' Match (g:Group) Where g.name = 'Веселое садоводство' Create (p)-[r:FOLLOWS{since:2000}]->(g)
+Match (p:Person) Where p.name = 'Никита' Match (g:Group) Where g.name = 'Новости университета' Create (p)-[r:FOLLOWS{since:2002}]->(g)
+Match (p:Person) Where p.name = 'Ольга' Match (g:Group) Where g.name = 'Новости университета' Create (p)-[r:FOLLOWS{since:2002}]->(g)
+Match (p:Person) Where p.name = 'Артем' Match (g:Group) Where g.name = 'Новости университета' Create (p)-[r:FOLLOWS{since:2002}]->(g)
+Match (p:Person) Where p.name = 'Василий' Match (g:Group) Where g.name = 'Популярные игры' Create (p)-[r:FOLLOWS{since:2020}]->(g)
+Match (p:Person) Where p.name = 'Данила' Match (g:Group) Where g.name = 'Популярные игры' Create (p)-[r:FOLLOWS{since:2022}]->(g)
+Match (p:Person) Where p.name = 'Полина' Match (g:Group) Where g.name = 'Современные фильмы' Create (p)-[r:FOLLOWS{since:2019}]->(g)
+Match (p:Person) Where p.name = 'Михаил' Match (g:Group) Where g.name = 'Вечерние новости' Create (p)-[r:FOLLOWS{since:2015}]->(g)
+Match (p:Person) Where p.name = 'Игорь' Match (g:Group) Where g.name = 'DevOps' Create (p)-[r:FOLLOWS{since:2018}]->(g)
+
+Match (p1:Person) Where p1.name = 'Елена' Set p1.surname='Belyakova' Set p1.name = 'Elena';
+Match (p2:Person) Where p2.name = 'Виктория' Set p2.surname='Petrova' Set p2.name = 'Viktoria';
+Match (p3:Person) Where p3.name = 'Данила' Set p3.surname='Stepanov' Set p3.name = 'Danila';
+Match (p4:Person) Where p4.name = 'Никита' Set p4.surname='Chijov' Set p4.name = 'Nikita';
+Match (p5:Person) Where p5.name = 'Егор' Set p5.surname='Mikhailov' Set p5.name = 'Egor';
+Match (p6:Person) Where p6.name = 'Игорь' Set p6.surname='Kovalev' Set p6.name = 'Igor';
+Match (p7:Person) Where p7.name = 'Михаил' Set p7.surname='Rodin' Set p7.name = 'Mikhail';
+Match (p8:Person) Where p8.name = 'Ольга' Set p8.surname='Kalinina' Set p8.name = 'Olga';
+Match (p9:Person) Where p9.name = 'Василий' Set p9.surname='Phomin' Set p9.name = 'Vasiliy';
+Match (p10:Person) Where p10.name = 'Дмитрий' Set p10.surname='Nikulin' Set p10.name = 'Dmitriy';
+Match (p11:Person) Where p11.name = 'Алина' Set p11.surname='Ershova' Set p11.name = 'Alina';
+Match (p12:Person) Where p12.name = 'Артем' Set p12.surname='Isakov' Set p12.name = 'Artem';
+Match (p13:Person) Where p13.name = 'Полина' Set p13.surname='Kusnetsov' Set p13.name = 'Polina';
+Match (p14:Person) Where p14.name = 'Елисей' Set p14.surname='Pirogov' Set p14.name = 'Elisey';
+Match (p15:Person) Where p15.name = 'Мишель' Set p15.surname='Ivanov' Set p15.name = 'Mishel';
+
+Match (g:Group) Where g.name = 'Веселое садоводство' Set g.name='Happy Gardening';
+Match (g:Group) Where g.name = 'Новости университета' Set g.name='University news';
+Match (g:Group) Where g.name = 'Популярные игры' Set g.name='Popular games';
+Match (g:Group) Where g.name = 'Современные фильмы' Set g.name='Modern films';
+Match (g:Group) Where g.name = 'Вечерние новости' Set g.name='Daily news';
+
+Match (g:Group) Where g.name = 'Happy Gardening' Set  g.topic = 'gardening';
+Match (g:Group) Where g.name = 'University news' Set g.topic = 'news';
+Match (g:Group) Where g.name = 'Popular games' Set g.topic = 'gaming';
+Match (g:Group) Where g.name = 'Modern films' Set g.topic = 'films';
+Match (g:Group) Where g.name = 'Daily news' Set g.topic = 'news';
+Match (g:Group) Where g.name = 'DevOps' Set g.topic = 'programming';

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Neo4jApp</title>
+   <link rel="stylesheet" type="text/css" href="../static/css/styles.css" th:href="@{/css/styles.css}" />
+   <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+</head>
+<body>
+
+<header>
+   <div class="logo">
+      <img th:src="@{/images/logo.бел.png}" />
+   </div>
+   <h1>Веб-ориентированное образовательное приложение<br>для изучения Neo4j</h1>
+   <input type="checkbox" id="side-checkbox" />
+   <div class="side-panel">
+      <label class="side-button-2" for="side-checkbox">+</label>
+      <div class="side-title">Курс Neo4j</div>
+      <p style="margin-top: 0.5em; margin-bottom: 1em;"><a href="/lesson1">Первый урок</a></p>
+      <ul  style="margin-right: 25px; margin-left: 25px;">
+         <li style="margin-top: 0.5em; margin-bottom: 1em; margin-left: 45px;"><a href="/task1">Задача 1</a></li>
+         <li style="margin-top: 0.5em; margin-bottom: 1em; margin-left: 45px;"><a href="/task2">Задача 2</a></li>
+         <li style="margin-top: 0.5em; margin-bottom: 1em; margin-left: 45px;"><a href="/task3">Задача 3</a></li>
+         <li style="margin-top: 0.5em; margin-bottom: 1em; margin-left: 45px;"><a href="/task4">Задача 4</a></li>
+      </ul>
+      <p style="margin-top: 0.5em; margin-bottom: 1em;"><a href="/lesson2">Второй урок</a></p>
+      <ul  style="margin-right: 25px; margin-left: 25px;">
+         <li style="margin-top: 0.5em; margin-bottom: 1em; margin-left: 45px;"><a href="/task5">Задача 5</a></li>
+         <li style="margin-top: 0.5em; margin-bottom: 1em; margin-left: 45px;"><a href="/task6">Задача 6</a></li>
+         <li style="margin-top: 0.5em; margin-bottom: 1em; margin-left: 45px;"><a href="/task7">Задача 7</a></li>
+         <li style="margin-top: 0.5em; margin-bottom: 1em; margin-left: 45px;"><a href="/task8">Задача 8</a></li>
+         <li style="margin-top: 0.5em; margin-bottom: 1em; margin-left: 45px;"><a href="/task9">Задача 9</a></li>
+      </ul>
+      <p style="margin-top: 0.5em; margin-bottom: 1em;"><a href="/lesson3">Третий урок</a></p>
+      <ul  style="margin-right: 25px; margin-left: 25px;">
+         <li style="margin-top: 0.5em; margin-bottom: 1em; margin-left: 45px;"><a href="/task10">Задача 10</a></li>
+         <li style="margin-top: 0.5em; margin-bottom: 1em; margin-left: 45px;"><a href="/task11">Задача 11</a></li>
+         <li style="margin-top: 0.5em; margin-bottom: 1em; margin-left: 45px;"><a href="/task12">Задача 12</a></li>
+         <li style="margin-top: 0.5em; margin-bottom: 1em; margin-left: 45px;"><a href="/task13">Задача 13</a></li>
+         <li style="margin-top: 0.5em; margin-bottom: 1em; margin-left: 45px;"><a href="/task14">Задача 14</a></li>
+      </ul>
+   </div>
+   <div class="side-button-1-wr">
+      <label class="side-button-1" for="side-checkbox">
+         <div class="side-b side-open"><p style="text-decoration:underline;">Навигационная панель</p></div>
+         <div class="side-b side-close"><p style="text-decoration:underline;">Навигационная панель</p></div>
+      </label>
+   </div>
+   <nav>
+      <div class="tooltip" style="font-size: 14pt; margin-right: 50px;"><p style="text-decoration:underline;">Описание БД</p>
+         <span class="tooltiptext">В данном приложении используется база данных некоторой социальной сети. Узлами являются люди (пользователи, метка Person) и группы (сообщества по интересам, метка Group). У Person есть следующие атрибуты - name (имя человека, строка), surname (фамилия человека, строка), birth_data (дата рождения человека, например '12.06.2004'). У Group присутствуют следующие атрибуты - name (название сообщества, строка), topic (общая тематика сообщества, строка), number_of_publications (число публикаций, целое число). Между людьми есть связи дружбы и ненависти (FRIENDS и HATES), не имеющие атрибутов. Между людьми и группами есть связь FOLLOWS, имеющая атрибут since, хранящий дату подписи пользователя на группу.</span>
+      </div>
+   </nav>
+
+</header>
+
+<main>
+
+   <div class="wrapper">
+      <div class="box box1">
+         <form class="request" th:object="${textData}" method="post">
+            <input type="text" th:field="*{input}" placeholder="Введите запрос ">
+            <input type="hidden" th:name="needs_reboot" th:value="false">
+            <button type="submit"></button>
+            <button type="save"></button>
+          </form>
+
+      </div>
+
+      <div class="box box2">
+         <h2>Задание</h2>
+         <p style="font-size: 14pt; text-indent: 20px;" th:utext="${textData.task}"></p>
+      </div>
+
+      <div class="box box3" >
+         <h2>Ответ сервера</h2>
+         <p th:utext="${gr_info}"></p>
+      </div>
+
+      <div class="box box4 light">
+         <h2>Визуализация</h2>
+         <a-scene embedded>
+            <a-camera wasd-controls-enabled="true" position=" 0 0 0" rotation="0 0 0"></a-camera>
+         </a-scene>
+         <script th:inline="javascript">
+            function normalize(vector) {
+               const length = Math.sqrt(vector.x * vector.x + vector.y * vector.y + vector.z * vector.z);
+               if (length === 0) {
+                 return {x: 0, y: 0, z: 0};
+               }
+               return {
+                 x: vector.x / length,
+                 y: vector.y / length,
+                 z: vector.z / length
+               };
+            }
+
+             function make_arr(first_id, sec_id, hex, text){
+               const scene = document.querySelector('a-scene');
+               let start = document.getElementById(first_id).getAttribute("position");
+               let end = document.getElementById(sec_id).getAttribute("position");
+               var dir = new THREE.Vector3( end.x-start.x, end.y-start.y, end.z-start.z);
+               //var scalar = -dir.x;
+               var l = Math.sqrt(dir.x * dir.x + dir.y * dir.y + dir.z * dir.z);
+               //var alph = Math.acos(scalar/ l) * (180 / Math.PI);
+               var origin = start;
+               var length = l - 0.15;
+               //var hex = 0x008000;
+               dir = normalize(dir);
+               var arrowHelper = new THREE.ArrowHelper( dir, origin, length, hex, 0.35 );
+               make_text({x:(end.x+start.x)/2, y:(end.y+start.y)/2, z:(end.z+start.z)/2}, text, {x: 0, y: -90, z: 0}, true);
+               make_text({x:(end.x+start.x)/2, y:(end.y+start.y)/2, z:(end.z+start.z)/2}, text, {x: 180, y: -90, z: 180}, false);
+               const entity = document.createElement('a-entity');
+               entity.setObject3D('arrow', arrowHelper);
+               scene.appendChild( entity );
+             }
+
+             function make_text(p, t, r, is_arr){
+               const scene = document.querySelector('a-scene');
+               const entity = document.createElement('a-entity');
+               entity.setAttribute('position', {x: p.x, y: p.y, z: p.z});
+               entity.setAttribute('rotation', r);
+               var text = document.createElement('a-text');
+               text.setAttribute('value', t);
+               text.setAttribute('color', "black");
+               text.setAttribute('align', "center");
+               text.setAttribute('visible', "true");
+               if (!is_arr){
+                 text.setAttribute('wrap-count', 120);
+               } else{
+                 text.setAttribute('wrap-count', 80);
+               }
+               /*if (is_arr){
+                 var text = document.createElement('div');
+                 text.style.position = 'absolute';
+                 text.style.zIndex = 5;
+                 text.style.backgroundColor = '#ffffff';
+                 text.innerHTML = t;
+
+                 var widthHalf = 200 / 2;
+                 var heightHalf = 200 / 2;
+                 var vector = new THREE.Vector3(p.x, p.y, p.z);
+                 var style = 'translate(-50%,-50%) translate(' + ( vector.x * widthHalf + widthHalf ) + 'px,' + ( - vector.y * heightHalf + heightHalf ) + 'px)';
+                 text.style.transform = style;
+                 //entity.setObject3D('txt', text);
+               }*/
+               entity.appendChild(text);
+               //entity.appendChild(cursor);
+               scene.appendChild(entity);
+             }
+
+             function make_node(p, id_num, hex, text){
+               const scene = document.querySelector('a-scene');
+               const sphere = document.createElement('a-sphere');
+               sphere.setAttribute('id', id_num);
+               sphere.setAttribute('radius', 0.15);
+               sphere.setAttribute('color', hex);
+               scene.appendChild(sphere);
+               document.getElementById(id_num).object3D.position.set(p.x, p.y, p.z);
+               make_text({x:p.x -0.15, y:p.y, z:p.z}, text, {x: 0, y: -90, z: 0}, false);
+               make_text({x:p.x +0.15, y:p.y, z:p.z}, text, {x: 180, y: -90, z: 180}, false);
+             }
+
+             var graph_vertex_pos = /*[[${graph_vertex_pos}]]*/;
+             var get_eadge_color = /*[[${get_eadge_color}]]*/;
+             var get_vertex_properties = /*[[${get_vertex_properties}]]*/;
+             var get_eadge_properites = /*[[${get_eadge_properites}]]*/;
+             var get_vertex_color = /*[[${get_vertex_color}]]*/;
+             var get_eadge_orientation = /*[[${get_eadge_orientation}]]*/;
+             //console.log(get_vertex_properties[0]);
+             for (let i = 0; i < graph_vertex_pos.length; i++){
+                  var arrayOfStrings = graph_vertex_pos[i].split(" ");
+                  make_node({x: parseFloat(arrayOfStrings[0]), y:  parseFloat(arrayOfStrings[1]), z:  parseFloat(arrayOfStrings[2])}, "p"+i, get_vertex_color[i], get_vertex_properties[i]);
+             }
+             //console.log(get_eadge_orientation.length);
+             for (let i = 0; i < get_eadge_orientation.length; i++){
+                  make_arr("p"+get_eadge_orientation[i].substring(0, get_eadge_orientation[i].lastIndexOf(" ")), "p"+get_eadge_orientation[i].substring(get_eadge_orientation[i].lastIndexOf(" ")+1, get_eadge_orientation[i].length), eval(get_eadge_color[i]), get_eadge_properites[i]);
+                  console.log(get_eadge_orientation[i]);
+             }
+
+             document.addEventListener('keydown', function(event) {
+               const cameraEl = document.querySelector('a-camera');
+               const step = 0.2; // Шаг движения вверх и вниз
+
+               if (event.key === 'PageUp') {
+                 cameraEl.object3D.position.y += step; // Движение вверх
+               } else if (event.key === 'PageDown') {
+                 cameraEl.object3D.position.y -= step; // Движение вниз
+               }
+             });
+             const myButton = document.getElementById('reboot');
+             const myInput = 0;
+
+             myButton.addEventListener('click', function() {
+               const value = myInput.value; // Получаем значение из поля ввода
+
+               fetch('/task${num}', {
+                 headers: {
+                   'Content-Type': 'application/json'
+                 },
+                 body: JSON.stringify({ value: value })
+               })
+               .then(response => response.text())
+               .then(data => {
+                 console.log('Результат от сервера:', data);
+               })
+               .catch(error => {
+                 console.error('Ошибка:', error);
+               });
+             });
+         </script>
+      </div>      
+   </div>
+   <div class="buttonNext light">
+         <form class="next" th:action="${next_task}">
+            <button type="submit">Следующее задание</button>
+         </form>
+      </div>
+   <div class="buttonNext light">
+      <form class="next" th:method="post">
+         <input type="hidden" th:name="needs_reboot" th:value="true">
+         <button type="submit">Требуется перезагрузка</button>
+      </form>
+   </div>
+
+</main>
+</body>
+</html>

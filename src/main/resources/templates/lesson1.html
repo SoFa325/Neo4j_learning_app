@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neo4jApp</title>
+  <link rel="stylesheet" type="text/css" href="../static/css/styles.css" th:href="@{/css/styles.css}" />
+  <style>
+    p {
+     margin-top: 0.5em;
+     margin-bottom: 1em;
+     font-size: 14pt;
+     text-indent: 20px;
+     color:Navy;
+    }
+  </style>
+  </head>
+<body>
+
+<header>
+  <div class="logo">
+    <img th:src="@{/images/logo.бел.png}" />
+  </div>
+  <h1>Веб-ориентированное образовательное приложение<br>для изучения Neo4j</h1>
+    <input type="checkbox" id="side-checkbox" />
+    <div class="side-panel">
+        <label class="side-button-2" for="side-checkbox">+</label>
+        <div class="side-title">Курс Neo4j</div>
+        <p style="margin-top: 0.5em; margin-bottom: 1em;"><a href="/lesson1">Первый урок</a></p>
+        <ul  style="margin-right: 25px; margin-left: 25px;">
+            <li style="margin-top: 0.5em; margin-bottom: 1em; margin-left: 45px;"><a href="/task1">Задача 1</a></li>
+            <li style="margin-top: 0.5em; margin-bottom: 1em; margin-left: 45px;"><a href="/task2">Задача 2</a></li>
+            <li style="margin-top: 0.5em; margin-bottom: 1em; margin-left: 45px;"><a href="/task3">Задача 3</a></li>
+            <li style="margin-top: 0.5em; margin-bottom: 1em; margin-left: 45px;"><a href="/task4">Задача 4</a></li>
+        </ul>
+        <p style="margin-top: 0.5em; margin-bottom: 1em;"><a href="/lesson2">Второй урок</a></p>
+        <ul  style="margin-right: 25px; margin-left: 25px;">
+            <li style="margin-top: 0.5em; margin-bottom: 1em; margin-left: 45px;"><a href="/task5">Задача 5</a></li>
+            <li style="margin-top: 0.5em; margin-bottom: 1em; margin-left: 45px;"><a href="/task6">Задача 6</a></li>
+            <li style="margin-top: 0.5em; margin-bottom: 1em; margin-left: 45px;"><a href="/task7">Задача 7</a></li>
+            <li style="margin-top: 0.5em; margin-bottom: 1em; margin-left: 45px;"><a href="/task8">Задача 8</a></li>
+            <li style="margin-top: 0.5em; margin-bottom: 1em; margin-left: 45px;"><a href="/task9">Задача 9</a></li>
+        </ul>
+        <p style="margin-top: 0.5em; margin-bottom: 1em;"><a href="/lesson3">Третий урок</a></p>
+        <ul  style="margin-right: 25px; margin-left: 25px;">
+            <li style="margin-top: 0.5em; margin-bottom: 1em; margin-left: 45px;"><a href="/task10">Задача 10</a></li>
+            <li style="margin-top: 0.5em; margin-bottom: 1em; margin-left: 45px;"><a href="/task11">Задача 11</a></li>
+            <li style="margin-top: 0.5em; margin-bottom: 1em; margin-left: 45px;"><a href="/task12">Задача 12</a></li>
+            <li style="margin-top: 0.5em; margin-bottom: 1em; margin-left: 45px;"><a href="/task13">Задача 13</a></li>
+            <li style="margin-top: 0.5em; margin-bottom: 1em; margin-left: 45px;"><a href="/task14">Задача 14</a></li>
+        </ul>
+    </div>
+    <div class="side-button-1-wr">
+        <label class="side-button-1" for="side-checkbox">
+            <div class="side-b side-open"><p style="text-decoration:underline;  color:#6495ED;">Навигационная панель</p></div>
+            <div class="side-b side-close"><p style="text-decoration:underline;  color:#6495ED;">Навигационная панель</p></div>
+        </label>
+    </div>
+    <nav>
+        <div class="tooltip" style="font-size: 14pt; margin-right: 50px; "><p style="text-decoration:underline; color:#6495ED;">Описание БД</p>
+            <span class="tooltiptext">В данном приложении используется база данных некоторой социальной сети. Узлами являются люди (пользователи, метка Person) и группы (сообщества по интересам, метка Group). У Person есть следующие атрибуты - name (имя человека, строка), surname (фамилия человека, строка), birth_data (дата рождения человека, например '12.06.2004'). У Group присутствуют следующие атрибуты - name (название сообщества, строка), topic (общая тематика сообщества, строка), number_of_publications (число публикаций, целое число). Между людьми есть связи дружбы и ненависти (FRIENDS и HATES), не имеющие атрибутов. Между людьми и группами есть связь FOLLOWS, имеющая атрибут since, хранящий дату подписи пользователя на группу.</span>
+        </div>
+    </nav>
+</header>
+<main>
+  <div class="wrapper">
+    <div class="box" style="margin-right: 25px; margin-left: 25px;">
+        <p>Графовые базы данных – NoSQL базы данных, специально реализованные для представления данных в виде графовых структур. Узлами являются экземпляры или сущности данных (данные – отслеживаемый объект). Для отображения взаимосвязи между узлами используются направленные рёбра. Описательную информацию, связанную с ребрами и узлами, называют свойствами.</p>
+        <p>В то время, как реляционные базы данных используют структурированный подход к данным, графовые базы более гибкие и благодаря своему устройству легко изменяемые. Они уделяют больше внимания отношениям между данными, делая моделирование сложных связей проще.</p>
+        <p>Языком запросов для графовой системы управления базами данных Neo4j является язык Cypher – декларативный графовый язык запросов, позволяющий писать выразительные и эффективные запросы к графовым данным. Данный язык сфокусирован на том, чтобы при написании запросов пользователь думал какую информацию ему необходимо получить из базы данных, а не на том, как это сделать. Рассмотрим его синтаксис подробнее.</p>
+        <p>Основными объектами базы данных являются узел, ребро, метка и атрибут. Узлы в Neo4j характеризуются метками и атрибутами. Метки показывают к какому типу (типам) принадлежит описываемый узлом объект. Атрибуты показывают различные свойства объекта. Ребрами являются связи между объектами также характеризующиеся метками и атрибутами. Типами атрибутов могут быть различные простейшие типы (строки, числа, логический тип, дата и время) а также их массивы и карты. Отсутствие значения обозначается константой NULL.</p>
+        <h3 align="center" style="color:Navy;">Создание элементов базы данных</h3>
+        <h4 style="color:Navy;">Оператор CREATE</h4>
+        <p>Для создания узлов и связей используется запросы с CREATE. При добавлении объекта базы данных в виде узла пишется следующий запрос:</p>
+        <p align="center">CREATE (переменная: метка1’: метка2…’ {атрибут1: значение1, …}) ‘RETURN переменная | переменная.атрибут1…’</p>
+        <p>Разберем данный запрос подробнее. В круглых скобках содержится шаблон создаваемого узла (все узлы в языке Cypher обозначаются круглыми скобками с уточняющей информацией в них) где переменная – обозначение узла (или ребра), которое можно использовать в дальнейшем запросе для манипуляций с данными и их вывода. Аналогом в SQL являются псевдонимы, но в Neo4j их использование обязательно. Далее, в секции RETURN приведен пример использования переменной. Секция RETURN является частью запроса, в которой обозначается возвращаемое значение данного запроса. Для запроса CREATE не обязательна. Также с помощью данного запроса можно создавать узлы и без меток, и без атрибутов. </p>
+        <p>Приведем пример использования CREATE для создания узла, где создадим узел с меткой Person с именем Оля, фамилией Калинина и датой рождения 02.03.2004:</p>
+        <p align="center">CREATE (p:Person {name:'Olya', surname:'Kalinina', birth_data:'02.03.2004'})</p>
+        <p>Чтобы создать связь между узлами есть два варианта:</p>
+        <ol style="margin-left: 40px; color:Navy;">
+          <li style="color:Navy;"><p>Если узлы уже созданы, сначала с помощью MATCH и переменных находим их в базе данных, после создаем связь с помощью оператора CREATE. Оператор MATCH используется для поиска и выборки информации из базы данных, более подробно рассмотрим его позднее. Пока, для нахождения двух узлов, например, по одному аргументу и создания связи между ними можно использовать следующий синтаксис:</p><p align="center">MATCH (м1: метка1 {атрибут1: значение1}), (м2: метка2 {атрибут2: значение2}) CREATE (м1)-[c:метка3 ‘{(задание атрибутов связи если необходимо)}’]->(м2)</p></li>
+          <li style="color:Navy;"><p>Если вы хотите создать одновременно связь и узлы необходимо использовать следующий синтаксис:</p><p align="center">CREATE (описание узла и его атрибутов)-[описание связи и ее атрибутов]->(описание второго узла и его атрибутов)</p></li>
+        </ol>
+        <p>С помощью одного запроса CREATE можно создать целый граф.</p>
+        <h4 style="color:Navy;">Оператор MERGE</h4>
+        <p>Также используется для создания узлов и ребер, но, в отличие от оператора CREATE, MERGE так же проверяет наличие создаваемых данных в базе данных. Например, такой запрос:</p>
+        <p align="center">CREATE (p:Person {name:’Vasya’})</p>
+        <p>при повторном выполнении создаст еще один узел с именем Вася и меткой Person. А следующий запрос:</p>
+        <p align="center">MERGE (p:Person {name:’Vasya’})</p>
+        <p>не изменит ничего в базе данных при условии существования такого узла в бд. Таким образом, MERGE используется для исключения дублирования данных. Но, при следующем запросе (известно, что оба узла есть в бд):</p>
+        <p align="center">MERGE (p:Person {name:’Vasya’})-[r:FRIENDS]->(p:Person {name:’Vika’})</p>
+        <p>В базу данных будут добавлены два новых узла и связь. Запрос MERGE не создает данные из шаблона, если все элементы в данном шаблоне есть в БД. Если хоть одного элемента нет в шаблоне, то MERGE создаст его, а также продублирует остальные элементы. Чтобы этого избежать, необходимо вводить ограничения целостности.</p>
+      </div>
+  </div>
+</main>
+</body>
+</html>
